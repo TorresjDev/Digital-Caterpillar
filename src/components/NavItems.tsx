@@ -14,16 +14,13 @@ const NavItems = () => {
 				setActiveIndex(null);
 			}
 		};
-
 		document.addEventListener("keydown", handler);
-
 		return () => {
 			document.removeEventListener("keydown", handler);
 		};
 	}, []);
 
 	const isAnyOpen = activeIndex !== null;
-
 	const navRef = useRef<HTMLDivElement | null>(null);
 
 	useOnClickOutside(navRef, () => setActiveIndex(null));
@@ -38,9 +35,7 @@ const NavItems = () => {
 						setActiveIndex(i);
 					}
 				};
-
 				const isOpen = i === activeIndex;
-
 				return (
 					<NavItem category={category} handleOpen={handleOpen} isOpen={isOpen} key={category.value} isAnyOpen={isAnyOpen} />
 				);

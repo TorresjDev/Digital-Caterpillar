@@ -27,7 +27,6 @@ const NavItem = ({ isAnyOpen, category, handleOpen, isOpen }: NavItemProps) => {
 					/>
 				</Button>
 			</div>
-
 			{isOpen ? (
 				<div
 					className={cn("absolute inset-x-0 top-full text-sm text-muted-foreground", {
