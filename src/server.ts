@@ -20,14 +20,15 @@ const start = async () => {
 	nextApp
 		.prepare()
 		.then(() => {
-			payload.logger.info("Next App started");
+			// payload.logger.info("Next App started");
+			console.log("Next App started");
 		})
 		.catch((e) => {
 			console.log(e);
 		});
 
 	app.listen(PORT, async () => {
-		payload.logger.info(`Next App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`);
+		// payload.logger.info(`Next App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`);
 	});
 };
 
