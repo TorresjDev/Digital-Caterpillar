@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { AuthCredentialsValidator, TAuthCredentialsValidator } from "@/lib/validators/account-credentials-validators";
-// import { trpc } from "@/trpc/clients";
+import { trpc } from "@/trpc/clients";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -20,11 +20,10 @@ const Page = () => {
 		resolver: zodResolver(AuthCredentialsValidator)
 	});
 
-	// const { data } = trpc.auth.useQuery();
-	// console.log({ data });
+	const { mutate, isLoading } = trpc.auth.createPayLoadUser.useMutation({});
 
 	const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
-		//send data to server
+		mutate({ email, password });
 	};
 
 	return (
@@ -48,7 +47,7 @@ const Page = () => {
 										/>
 									</div>
 								</div>
-								<div className="grid gap-2">
+								<div className="grid gap-2 pb-1">
 									<div className="grid gap-1 py-2">
 										<Label htmlFor="password">Password</Label>
 										<Input
@@ -57,9 +56,12 @@ const Page = () => {
 												"focus-visible:ring-red-600": errors.password
 											})}
 											placeholder="Password"
+											type="password"
 										/>
-										<Button>Sign-up</Button>
 									</div>
+								</div>
+								<div className="py-1">
+									<Button>Sign-up</Button>
 								</div>
 							</form>
 						</div>

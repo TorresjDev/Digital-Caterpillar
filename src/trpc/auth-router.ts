@@ -23,8 +23,14 @@ export const authRouter = router({
 		}
 
 		await payload.create({
+			// triggers sign-in verification email to user
 			collection: "users",
-			data: {}
+			data: {
+				email,
+				password,
+				role: "user"
+			}
 		});
+		return { success: true, sentToEmail: email };
 	})
 });
