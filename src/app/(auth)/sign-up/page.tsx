@@ -47,7 +47,7 @@ const Page = () => {
 										/>
 									</div>
 								</div>
-								<div className="grid gap-2">
+								<div className="grid gap-2 pb-1">
 									<div className="grid gap-1 py-2">
 										<Label htmlFor="password">Password</Label>
 										<Input
@@ -60,7 +60,9 @@ const Page = () => {
 										/>
 									</div>
 								</div>
-								<Button>Sign-up</Button>
+								<div className="py-1">
+									<Button>Sign-up</Button>
+								</div>
 							</form>
 						</div>
 						<div className="flex">
